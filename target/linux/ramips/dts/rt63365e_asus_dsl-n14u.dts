@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+
+#include "rt63365e.dtsi"
+
+/ {
+	compatible = "asus,dsl-n14u", "ralink,rt63365e-soc";
+	model = "Asus DSL-N14U";
+};
