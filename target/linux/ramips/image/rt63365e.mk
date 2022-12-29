@@ -7,8 +7,11 @@ define Device/asus_dsl-n14u
   DEVICE_MODEL := DSL-N14U
   SUPPORTED_DEVICES += dsl-n14u
   SOC := rt63365e
+  LOADER_TYPE := bin
+  KERNEL := kernel-bin | lzma | loader-kernel | lzma-no-dict
+  KERNEL_SIZE := 1572608
   IMAGES := DSL-N14U.trx
-  IMAGE/DSL-N14U.trx := append-kernel | lzma | append-rootfs | tctrx
+  IMAGE/DSL-N14U.trx := append-kernel | append-rootfs | tctrx
 endef
 TARGET_DEVICES += asus_dsl-n14u
 
