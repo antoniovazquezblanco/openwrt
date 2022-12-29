@@ -14,8 +14,9 @@ DEVICE_VARS += SERCOMM_HWNAME SERCOMM_HWID SERCOMM_HWVER SERCOMM_SWVER
 DEVICE_VARS += SERCOMM_PAD JCG_MAXSIZE
 
 loadaddr-y := 0x80000000
-loadaddr-$(CONFIG_TARGET_ramips_rt288x) := 0x88000000
-loadaddr-$(CONFIG_TARGET_ramips_mt7621) := 0x80001000
+loadaddr-$(CONFIG_TARGET_ramips_rt288x)   := 0x88000000
+loadaddr-$(CONFIG_TARGET_ramips_mt7621)   := 0x80001000
+loadaddr-$(CONFIG_TARGET_ramips_rt63365e) := 0x80020000
 
 ldrplatform-y := ralink
 ldrplatform-$(CONFIG_TARGET_ramips_mt7621) := mt7621
