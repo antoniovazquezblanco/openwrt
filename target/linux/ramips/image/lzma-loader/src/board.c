@@ -52,7 +52,6 @@
 #define READREG(r)		(*(volatile uint32_t *)(r))
 #define WRITEREG(r,v)	(*(volatile uint32_t *)(r)) = v
 
-
 void board_init(void)
 {
 }
