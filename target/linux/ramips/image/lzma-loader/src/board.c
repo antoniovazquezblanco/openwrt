@@ -44,6 +44,11 @@
 #define UART_THR			(UART_BASE + 0x04)
 #define UART_LSR			(UART_BASE + 0x1c)
 #define UART_LSR_MASK			UART_LSR_THRE
+#elif defined(SOC_RT63365E)
+#define UART_BASE			KSEG1ADDR(0xbfbf0000)
+#define UART_THR			(UART_BASE + 0x03)
+#define UART_LSR			(UART_BASE + 0x17)
+#define UART_LSR_MASK			UART_LSR_THRE
 #else
 #error "Unsupported SOC..."
 #endif
