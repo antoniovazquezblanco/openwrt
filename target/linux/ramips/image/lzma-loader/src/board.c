@@ -54,16 +54,24 @@
 #endif
 
 // Helper functions
-#define READREG(r)		(*(volatile uint32_t *)(r))
-#define WRITEREG(r,v)	(*(volatile uint32_t *)(r)) = v
+#define READREG_U8(r)		(*(volatile uint8_t *)(r))
+#define WRITEREG_U8(r,v)	(*(volatile uint8_t *)(r)) = v
 
 void board_init(void)
 {
+	#define	CR_UART_FCR (0x08+UART_BASE+3)
+	WRITEREG_U8(CR_UART_FCR, 0xf);
+	#define	CR_UART_MCR (0x10+UART_BASE+3)
+	WRITEREG_U8(CR_UART_MCR, 0);
+	#define	CR_UART_MISCC		(0x24+UART_BASE+3)
+	WRITEREG_U8(CR_UART_MISCC, 0);
+	#define CR_UART_IER (UART_BASE + 3 + 4)
+	WRITEREG_U8(CR_UART_IER, 0);
 }
 
 void board_putc(int ch)
 {
-	while ((READREG(UART_LSR) & UART_LSR_MASK) == 0);
-	WRITEREG(UART_THR, ch);
-	while ((READREG(UART_LSR) & UART_LSR_MASK) == 0);
+	while ((READREG_U8(UART_LSR) & UART_LSR_MASK) == 0);
+	WRITEREG_U8(UART_THR, (uint8_t) ch);
+	while ((READREG_U8(UART_LSR) & UART_LSR_MASK) == 0);
 }
